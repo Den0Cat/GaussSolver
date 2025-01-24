@@ -1,7 +1,11 @@
 def parse_linear(linear: str) -> list[dict]:
-    variables = list(set(map(lambda symbol: symbol if symbol.isalpha() else '', linear)))
+    #variables = list(set(map(lambda symbol: symbol if symbol.isalpha() else '', linear)))
+    variables = []
+    for item in linear:
+        if item not in variables and item.isalpha():
+            variables.append(item)
     variables += ['=']
-    if '' in variables: variables.remove('')
+    #if '' in variables: variables.remove('')
     linear = linear.split('\n')
     variables_book = [{var:0 for var in variables} for i in range(len(linear))]
     for ind in range(len(linear)):
